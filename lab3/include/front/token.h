@@ -1,16 +1,3 @@
-/**
- * @file Token.h
- * @author Yuntao Dai (d1581209858@live.com)
- * @brief 
- * definition of Token
- * a Token should has its type and its value(the string)
- * @version 0.1
- * @date 2022-12-14
- * 
- * @copyright Copyright (c) 2022
- * 
- */
-
 #ifndef TOKEN_H
 #define TOKEN_H
 

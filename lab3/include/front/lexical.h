@@ -1,21 +1,3 @@
-/**
- * @file lexical.h
- * @author Yuntao Dai (d1581209858@live.com)
- * @brief
- * in this part, we need to design a DFA
- * so what should this DFA do? 
- * input a char, then acording to its current status, change to another state
- * during the changes, from one state to another, there maybe output -> Token
- * 
- * then we need to design a Scanner
- * which takes the input file and output a Token stream
- * 
- * @version 0.1
- * @date 2022-12-14
- *
- * @copyright Copyright (c) 2022
- */
-
 #ifndef LEXICAL_H
 #define LEXICAL_H
 
@@ -74,6 +56,11 @@ struct DFA {
 private:
     State cur_state;    // record current state of the DFA
     std::string cur_str;    // record input characters
+    void processEmpty(char input, Token& buf, bool& flag);
+    void processIdent(char input, Token& buf, bool& flag);
+    void processOp(char input, Token& buf, bool& flag);
+    void processIntLiteral(char input, Token& buf, bool& flag);
+    void processFloatLiteral(char input, Token& buf, bool& flag);
 };
 
 // definition of Scanner

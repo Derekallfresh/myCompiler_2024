@@ -37,7 +37,9 @@ using frontend::LAndExp;
 using frontend::LOrExp;
 using frontend::ConstExp;
 
-AstNode::AstNode(NodeType t, AstNode* p): type(t), parent(p), children() {}
+AstNode::AstNode(NodeType t, AstNode* p): type(t), parent(p), children() {
+    if(p != nullptr)    p->children.push_back(this);   // 修改构造函数
+}
 
 AstNode::~AstNode() {
     for(auto it: children)
@@ -125,7 +127,6 @@ LAndExp::LAndExp(AstNode* p): AstNode(NodeType::LANDEXP, p) {}
 LOrExp::LOrExp(AstNode* p): AstNode(NodeType::LOREXP, p) {}
 
 ConstExp::ConstExp(AstNode* p): AstNode(NodeType::CONSTEXP, p) {}
-
 
 std::string frontend::toString(NodeType nt) {
     switch (nt) {
